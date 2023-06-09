@@ -1,0 +1,687 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Annotations - Spring & Hibernate</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.472b142f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.08040f6c.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="None" data-md-color-accent="None">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#what-are-java-annotations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Spring &amp; Hibernate" class="md-header__button md-logo" aria-label="Spring & Hibernate" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spring & Hibernate
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Annotations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Spring &amp; Hibernate" class="md-nav__button md-logo" aria-label="Spring & Hibernate" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Spring & Hibernate
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="annotations.html" class="md-nav__link md-nav__link--active">
+        Annotations
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mvc.html" class="md-nav__link">
+        MVC
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hibernate.html" class="md-nav__link">
+        Hibernate
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hibernate_mvc_project.html" class="md-nav__link">
+        Hibernate & MVC Project
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="aop.html" class="md-nav__link">
+        Aspect Oriented Programming (AOP)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security.html" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maven.html" class="md-nav__link">
+        Maven
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rest.html" class="md-nav__link">
+        REST
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="what-are-java-annotations">What are Java Annotations?<a class="headerlink" href="#what-are-java-annotations" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Labels that provide meta-data about the class</li>
+<li>Boot (Class): Color (label)</li>
+<li><code>@Override</code> telling the compiler that we want to override that method. At compile time, the compiler will verify the override.</li>
+</ul>
+<h1 id="spring-configuration-with-annotations">Spring Configuration with Annotations<a class="headerlink" href="#spring-configuration-with-annotations" title="Permanent link">&para;</a></h1>
+<ul>
+<li>XML can be very verbose</li>
+<li>Configure beans with Annotations</li>
+<li>Spring will scan your Java classes for annotations</li>
+<li>Automatically register the beans in the Spring container (no more XML needed).</li>
+</ul>
+<h1 id="development-process">Development Process<a class="headerlink" href="#development-process" title="Permanent link">&para;</a></h1>
+<ol>
+<li>Enable component scanning in Spring config file</li>
+<li>Add the <code>@Component</code> Annotation to class</li>
+<li>Retrieve the bean from Spring container</li>
+</ol>
+<p>Enable component scanning in Spring config file
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;beans</span> <span class="err">...</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">&quot;com.dstoecklein.springdemo&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></div></p>
+<p>Add the <code>@Component</code> Annotation to class. Will register bean. <code>thatSillyCoach</code> is the bean id.
+<div class="highlight"><pre><span></span><code><span class="nd">@Component</span><span class="p">(</span><span class="s">&quot;thatSillyCoach&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TennisCoach</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Coach</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDailyWorkout</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;TennisCoach&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p>Retrieve the bean from Spring container</p>
+<div class="highlight"><pre><span></span><code><span class="n">Coach</span><span class="w"> </span><span class="n">theCoach</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="s">&quot;thatSillyCoach&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Coach</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<h1 id="constructor-injection">Constructor Injection<a class="headerlink" href="#constructor-injection" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Now we are using <code>@Autowiring</code></li>
+<li>For dependency injection, Spring can autowire these dependencies</li>
+<li>Spring will look for a class that matches the property (by class or interface)</li>
+<li>3 types</li>
+<li>Constructor injection</li>
+<li>Setter injection</li>
+<li>Field injection</li>
+</ul>
+<h2 id="autowiring-example">Autowiring example<a class="headerlink" href="#autowiring-example" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Injecting FortuneService into a Coach implementation</li>
+<li>Spring will scan <code>@Components</code></li>
+<li>
+<p>Did anyone implement FortuneService interface???</p>
+</li>
+<li>
+<p>Define the dependency interface and class</p>
+</li>
+<li>Create a constructor in your class for injections</li>
+<li>Configure the dependency injection with <code>@Autowired</code></li>
+</ul>
+<p>Define the dependency interface and class</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">FortuneService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getFortune</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="nd">@Component</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HappyFortuneService</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">FortuneService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getFortune</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Today is your lucky day!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Create a constructor in your class for injections
+Configure the dependency injection with <code>@Autowired</code></p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Component</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TennisCoach</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Coach</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">FortuneService</span><span class="w"> </span><span class="n">fortuneService</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">TennisCoach</span><span class="p">(</span><span class="n">FortuneService</span><span class="w"> </span><span class="n">theFortuneService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">fortuneService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">theFortuneService</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Spring will find a bean that implements <code>FortuneService</code>, here its <code>HappyFortuneService</code>. So we get the <code>Coach</code> object and its <code>FortuneService</code> wired up together.</p>
+<h1 id="setter-injection">Setter injection<a class="headerlink" href="#setter-injection" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>Inject dependencies by calling setter methods</p>
+</li>
+<li>
+<p>Create setter methods in your class</p>
+</li>
+<li>Configure the dependency injection with <code>@Autowired</code></li>
+</ul>
+<p>Create setter methods in your class
+Configure the dependency injection with <code>@Autowired</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TennisCoach</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Coach</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">FortuneService</span><span class="w"> </span><span class="n">fortuneService</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">TennisCoach</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+
+<span class="w">  </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setFortuneService</span><span class="p">(</span><span class="n">FortuneService</span><span class="w"> </span><span class="n">fortuneService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">fortuneService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fortuneService</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h1 id="field-injection">Field injection<a class="headerlink" href="#field-injection" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Inject dependencies by setting the field values on your class directly</li>
+<li>
+<p>Accomplished by using Java reflection</p>
+</li>
+<li>
+<p>Configure the dependency using <code>@Autowired</code></p>
+</li>
+<li>Applied directly on fields</li>
+<li>No setters required</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TennisCoach</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Coach</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">FortuneService</span><span class="w"> </span><span class="n">fortuneService</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">TennisCoach</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h2 id="which-injection-type-to-use">Which injection type to use?<a class="headerlink" href="#which-injection-type-to-use" title="Permanent link">&para;</a></h2>
+<p>Choose a style and keep consistent.</p>
+<h1 id="annotation-autowiring-and-qualifiers">Annotation Autowiring and Qualifiers<a class="headerlink" href="#annotation-autowiring-and-qualifiers" title="Permanent link">&para;</a></h1>
+<ul>
+<li>But which implementation to choose if multiple interface implementations exist?</li>
+<li><code>NoUniqueBeanDefinitionException</code></li>
+<li>Add <code>beanId</code> to <code>@Qualifier</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nd">@Component</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TennisCoach</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Coach</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">  </span><span class="nd">@Qualifier</span><span class="p">(</span><span class="s">&quot;happyFortuneService&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">FortuneService</span><span class="w"> </span><span class="n">fortuneService</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h1 id="bean-scopes-with-annotations">Bean Scopes with Annotations<a class="headerlink" href="#bean-scopes-with-annotations" title="Permanent link">&para;</a></h1>
+<ul>
+<li>We have already used scopes with XML declarations</li>
+<li>We can do it using <code>@Scope("singleton")</code> or <code>@Scope("prototype")</code> in the Java class that implements interface.</li>
+</ul>
+<h1 id="bean-lifecycle-methods-hooks">Bean lifecycle methods / hooks<a class="headerlink" href="#bean-lifecycle-methods-hooks" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Remember, we can add custom code during <em>bean initialization</em> and <em>bean destruction</em>.</li>
+<li>We can do it using <code>@PostConstruct</code> or <code>@PreDestroy</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nd">@Component</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TennisCoach</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Coach</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@PostConstruct</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doMyStartupStuff</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@PreDestroy</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doMyCleanupStuff</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h1 id="configure-a-spring-container-using-java-instead-of-xml">Configure a Spring container using Java instead of XML<a class="headerlink" href="#configure-a-spring-container-using-java-instead-of-xml" title="Permanent link">&para;</a></h1>
+<p>There are 3 ways of configuring a Spring container
+1. Full XML config
+2. XML Component Scan (making the XML a little smaller)
+3. Java Configuration Class with <code>@Configuration</code></p>
+<p>Step by Step:
+1. Create a Java class with <code>@Configuration</code>
+2. Add component scan (optional)
+3. Read Spring Java config class
+4. Retrieve bean from Spring container</p>
+<p>Create a Java class with <code>@Configuration</code></p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SprotConfig</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Add component scan (optional)</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span><span class="w"></span>
+<span class="nd">@ComponentScan</span><span class="p">(</span><span class="s">&quot;com.dstoecklein.springdemo&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SprotConfig</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Read Spring Java config class
+<div class="highlight"><pre><span></span><code><span class="n">AnnotationConfigApplicationContext</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AnnotationConfigApplicationContext</span><span class="p">(</span><span class="n">SportConfig</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></p>
+<p>Retrieve bean from Spring container
+<div class="highlight"><pre><span></span><code><span class="n">Coach</span><span class="w"> </span><span class="n">theCoach</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="s">&quot;tennisCoach&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Coach</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></p>
+<h1 id="defining-beans-using-java-instead-of-xml">Defining Beans using Java instead of XML<a class="headerlink" href="#defining-beans-using-java-instead-of-xml" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SwimCoach</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Coach</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Step by Step:
+1. Define method to expose the bean
+2. Injection bean dependencies
+3. Read Spring Java config class
+4. Retrieve bean from Spring container</p>
+<p>Define method to expose the bean. Create new instance of <code>SwimCoach</code> inside our Config. The method name <code>swimCoach</code> will be the <code>beanId</code>. No <code>component Scan</code> required.
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SportConfig</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Coach</span><span class="w"> </span><span class="nf">swimCoach</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwimCoach</span><span class="w"> </span><span class="n">mySwimCoach</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwimCoach</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">mySwimCoach</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p>Injection bean dependencies. We know our Coach need <code>Fortune</code> dependency. So how do we pull that in?</p>
+<p>We define a <code>bean</code> for <code>FortuneService</code> that returns a new instance of <code>happyFortuneService</code>. Again, the method name will be the <code>beanId</code>. Next we inject that dependency to <code>mySwimCoach</code>.
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SportConfig</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">FortuneService</span><span class="w"> </span><span class="nf">happyFortuneService</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HappyFortuneService</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Coach</span><span class="w"> </span><span class="nf">swimCoach</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwimCoach</span><span class="w"> </span><span class="n">mySwimCoach</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwimCoach</span><span class="p">(</span><span class="n">happyFortuneService</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">mySwimCoach</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p>Read Spring Java config class
+<div class="highlight"><pre><span></span><code><span class="n">AnnotationConfigApplicationContext</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AnnotationConfigApplicationContext</span><span class="p">(</span><span class="n">SportConfig</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></p>
+<p>Retrieve bean from Spring container
+<div class="highlight"><pre><span></span><code><span class="n">Coach</span><span class="w"> </span><span class="n">theCoach</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="s">&quot;swimCoach&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Coach</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></p>
+<h1 id="inject-values-from-properties-file">Inject values from properties file<a class="headerlink" href="#inject-values-from-properties-file" title="Permanent link">&para;</a></h1>
+<p>Step by Step:
+1. Create properties file
+2. Load properties file in Spring config
+3. Reference values from properties file</p>
+<p>Create properties file
+<div class="highlight"><pre><span></span><code>foo.email=example@team.com
+foo.team=exampleTeam
+</code></pre></div></p>
+<p>Load properties file in Spring config</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span><span class="w"></span>
+<span class="nd">@PropertySource</span><span class="p">(</span><span class="s">&quot;classpath:sport.properties&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SportConfig</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Reference values from properties file
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SwimCoach</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Coach</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Value</span><span class="p">(</span><span class="s">&quot;${foo.email}&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Value</span><span class="p">(</span><span class="s">&quot;${foo.team}&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">team</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Introduction
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="mvc.html" class="md-footer__link md-footer__link--next" aria-label="Next: MVC" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              MVC
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+    
+  </body>
+</html>

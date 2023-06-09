@@ -1,0 +1,1051 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Hibernate & MVC Project - Spring & Hibernate</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.472b142f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.08040f6c.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="None" data-md-color-accent="None">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hibernate-mvc-project" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Spring &amp; Hibernate" class="md-header__button md-logo" aria-label="Spring & Hibernate" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spring & Hibernate
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hibernate & MVC Project
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Spring &amp; Hibernate" class="md-nav__button md-logo" aria-label="Spring & Hibernate" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Spring & Hibernate
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="annotations.html" class="md-nav__link">
+        Annotations
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mvc.html" class="md-nav__link">
+        MVC
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hibernate.html" class="md-nav__link">
+        Hibernate
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Hibernate & MVC Project
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="hibernate_mvc_project.html" class="md-nav__link md-nav__link--active">
+        Hibernate & MVC Project
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#development-process" class="md-nav__link">
+    Development Process
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#big-picture" class="md-nav__link">
+    Big Picture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getmapping-postmapping" class="md-nav__link">
+    @GetMapping &amp; @PostMapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-annotation" class="md-nav__link">
+    @Service Annotation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-customer" class="md-nav__link">
+    Add a Customer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-customer" class="md-nav__link">
+    Update Customer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-customer" class="md-nav__link">
+    Delete Customer
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="aop.html" class="md-nav__link">
+        Aspect Oriented Programming (AOP)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security.html" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maven.html" class="md-nav__link">
+        Maven
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rest.html" class="md-nav__link">
+        REST
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="hibernate-mvc-project">Hibernate &amp; MVC Project<a class="headerlink" href="#hibernate-mvc-project" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Build a CRM System</li>
+</ul>
+<h2 id="development-process">Development Process<a class="headerlink" href="#development-process" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Create tables (see SQL scripts)</li>
+<li>Add JDBC Driver for MySQL (to <code>WEB-INF/lib/mysql-connector.jar</code>)</li>
+<li>Copy over <code>web.xml</code> and <code>spring-mvc-crud-demo-servlet.xml</code> as starter files</li>
+<li>Sanity test to make sure we can connect to DB</li>
+</ul>
+<h2 id="big-picture">Big Picture<a class="headerlink" href="#big-picture" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Our DAO will make use of the Hibernate API for accessing data and sending it back to the controller</li>
+<li>This DAO object will have methods for</li>
+<li><code>saveCustomer()</code></li>
+<li><code>getCustomer()</code></li>
+<li><code>updateCustomer()</code></li>
+<li><code>deleteCustomer()</code></li>
+</ul>
+<p><img alt="restproject2" src="images/restproject2.png" /></p>
+<h3 id="listing-customers">Listing customers<a class="headerlink" href="#listing-customers" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Create <code>Customer.java</code> entity class</li>
+<li>Create <code>CustomerDAO.java</code> + <code>CustomerDAOImpl.java</code></li>
+<li>Create <code>CustomerController.java</code></li>
+<li>Create JSP page <code>list-customer.jsp</code></li>
+</ul>
+<h3 id="create-customerjava-entity-class">Create <code>Customer.java</code> entity class<a class="headerlink" href="#create-customerjava-entity-class" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nd">@Entity</span><span class="w"></span>
+<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;customer&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Customer</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Id</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;id&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;firstName&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+</code></pre></div>
+<p>Remember: How will Hibernate or Spring know about our entity classes?</p>
+<p><code>spring-mvc-crud-demo-servlet.xml</code></p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;sessionFactory&quot;</span>
+    <span class="na">class=</span><span class="s">&quot;org.springframework.orm.hibernate5.LocalSessionFactoryBean&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;dataSource&quot;</span> <span class="na">ref=</span><span class="s">&quot;myDataSource&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;packagesToScan&quot;</span> <span class="na">value=</span><span class="s">&quot;com.dstoecklein.springdemo.entity&quot;</span> <span class="nt">/&gt;</span>
+    ...
+</code></pre></div>
+<h3 id="create-customerdaojava-customerdaoimpljava">Create <code>CustomerDAO.java</code> + <code>CustomerDAOImpl.java</code><a class="headerlink" href="#create-customerdaojava-customerdaoimpljava" title="Permanent link">&para;</a></h3>
+<ul>
+<li>For Hibernate our DAO needs a <code>SessionFactory</code></li>
+<li>Factory needs a data source (how connect to DB etc.)</li>
+<li>All of these are dependencies, so we can use dependency injection here</li>
+</ul>
+<p><code>spring-mvc-crud-demo-servlet.xml</code>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;myDataSource&quot;</span> <span class="na">class=</span><span class="s">&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;</span>
+      <span class="na">destroy-method=</span><span class="s">&quot;close&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;driverClass&quot;</span> <span class="na">value=</span><span class="s">&quot;com.mysql.cj.jdbc.Driver&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;jdbcUrl&quot;</span> <span class="na">value=</span><span class="s">&quot;jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false&amp;amp;serverTimezone=UTC&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;user&quot;</span> <span class="na">value=</span><span class="s">&quot;hbstudent&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;password&quot;</span> <span class="na">value=</span><span class="s">&quot;hbstudent&quot;</span> <span class="nt">/&gt;</span>
+  ...
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;sessionFactory&quot;</span>
+        <span class="na">class=</span><span class="s">&quot;org.springframework.orm.hibernate5.LocalSessionFactoryBean&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;dataSource&quot;</span> <span class="na">ref=</span><span class="s">&quot;myDataSource&quot;</span> <span class="nt">/&gt;</span>
+...
+</code></pre></div>
+<p><img alt="factory" src="images/factory.png" /></p>
+<p>Define the DAO interface</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CustomerDAO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getCustomers</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Define DAO implementation</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomerDAOImp</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CustomerDAO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">SessionFactory</span><span class="w"> </span><span class="n">sessionFactory</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getCustomers</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>Spring provides this special annotation <code>@Transactional</code> to automatically begin and end a transaction for your hibernate code</li>
+<li>No need for stuff like <code>session.beginTransaction()</code> or <code>session.getTransaction().commit();</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomerDAOImp</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CustomerDAO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">SessionFactory</span><span class="w"> </span><span class="n">sessionFactory</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Transactional</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getCustomers</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">Session</span><span class="w"> </span><span class="n">currentSession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sessionFactory</span><span class="p">.</span><span class="na">getCurrentSession</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">Query</span><span class="o">&lt;</span><span class="n">Custoer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentSession</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;from Customer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Customer</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">customers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">theQuery</span><span class="p">.</span><span class="na">getResultList</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">customers</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>Spring has another special annotation <code>@Repository</code> for DAOs</li>
+<li>Place at the Top of the DAO implementation</li>
+<li>Spring will automatically register the DAO implementation</li>
+<li>Spring will provide translation of any JDBC related exceptions</li>
+</ul>
+<p><img alt="repository" src="images/repository.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Repository</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomerDAOImpl</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CustomerDAO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">SessionFactory</span><span class="w"> </span><span class="n">sessionFactory</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Transactional</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getCustomers</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">Session</span><span class="w"> </span><span class="n">currentSession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sessionFactory</span><span class="p">.</span><span class="na">getCurrentSession</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">Query</span><span class="o">&lt;</span><span class="n">Custoer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentSession</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;from Customer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Customer</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">theQuery</span><span class="p">.</span><span class="na">getResultList</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="create-customercontrollerjava">Create <code>CustomerController.java</code><a class="headerlink" href="#create-customercontrollerjava" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Inject DAO into controller</li>
+<li>Remember: Spring gonna scan for components that implements the <code>CustomerDAO</code> interface</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nd">@Controller</span><span class="w"></span>
+<span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&quot;/customer&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomerController</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// inject customer DAO</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">CustomerDAO</span><span class="w"> </span><span class="n">customerDAO</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&quot;/list&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">listCustomers</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">theModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// get customer from DAO</span><span class="w"></span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theCustomers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customerDAO</span><span class="p">.</span><span class="na">getCustomers</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// add customers to the mode</span><span class="w"></span>
+<span class="w">        </span><span class="n">theModel</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;customers&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">theCustomers</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;list-customers&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="create-jsp-page-list-customerjsp">Create JSP page <code>list-customer.jsp</code><a class="headerlink" href="#create-jsp-page-list-customerjsp" title="Permanent link">&para;</a></h3>
+<p>...</p>
+<h3 id="adding-css">Adding CSS<a class="headerlink" href="#adding-css" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- Add support for reading web resources: css, images, js, etc ... --&gt;</span>
+<span class="nt">&lt;mvc:resources</span> <span class="na">location=</span><span class="s">&quot;/resources/&quot;</span> <span class="na">mapping=</span><span class="s">&quot;/resources/**&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h3 id="add-welcome-file">Add Welcome File<a class="headerlink" href="#add-welcome-file" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Configured in <code>web.xml</code></li>
+</ul>
+<h2 id="getmapping-postmapping"><code>@GetMapping</code> &amp; <code>@PostMapping</code><a class="headerlink" href="#getmapping-postmapping" title="Permanent link">&para;</a></h2>
+<ul>
+<li>On HTML Form we add something like</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="na">processForm</span><span class="err">&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;GET&quot;</span> <span class="err">...</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li>
+<p>What we did so far is to use <code>@RequestMapping()</code> which actually handles <strong>ALL HTTP</strong> methods (GET, POST, PUT, ...)
+<div class="highlight"><pre><span></span><code><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&quot;/processForm&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">processForm</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+</li>
+<li>
+<p>We can constraint the mapping by using 
+<div class="highlight"><pre><span></span><code><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&quot;/processForm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">GET</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">processForm</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+</li>
+<li>
+<p>With <code>@GetMapping</code> &amp; <code>@PostMapping</code> we can shortcut the above mapping</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/processForm&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">processForm</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="when-to-use-what">When to use what<a class="headerlink" href="#when-to-use-what" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>GET</code>: Good for debugging, limitations on data length, can bookmark the URL</li>
+<li><code>POST</code>: no limitations on data length, can send bindary data, cant bookmark the URL</li>
+</ul>
+<h2 id="service-annotation"><code>@Service</code> Annotation<a class="headerlink" href="#service-annotation" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Refactor: Add a service layer which sits between our controller and DAO</li>
+<li>The purpose: Implementation of <strong>Service Facade</strong> design pattern, able to integrate data from multiple sources</li>
+<li><code>@Service</code> also inherits from <code>@Component</code></li>
+<li>Its applied to the Service implementation</li>
+</ul>
+<p><img alt="service" src="images/service.png" /></p>
+<h3 id="development-process_1">Development process<a class="headerlink" href="#development-process_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Define Service interface</li>
+<li>Define Service implementation</li>
+<li>Inject DAO</li>
+</ul>
+<p>Define Service interface
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CustomerService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getCustomers</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p>Define Service implementation
+<div class="highlight"><pre><span></span><code><span class="nd">@Service</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomerServiceImpl</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CustomerService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">CustomerDAO</span><span class="w"> </span><span class="n">customerDAO</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Transactional</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getCustomers</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<ul>
+<li>We also move the <code>@Transactional</code> part to our service, because our Service define the begin and end of a given transaction.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nd">@Repository</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomerDAOImpl</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CustomerDAO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// inject dependency</span><span class="w"></span>
+<span class="w">  </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">SessionFactory</span><span class="w"> </span><span class="n">sessionFactory</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getCustomers</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// get current hibernate session</span><span class="w"></span>
+<span class="w">    </span><span class="n">Session</span><span class="w"> </span><span class="n">currentSession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sessionFactory</span><span class="p">.</span><span class="na">getCurrentSession</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// create query</span><span class="w"></span>
+<span class="w">    </span><span class="n">Query</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentSession</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;from Customer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Customer</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">theQuery</span><span class="p">.</span><span class="na">getResultList</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>Modification to Controller to use customerService instead of DAO.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nd">@Controller</span><span class="w"></span>
+<span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&quot;/customer&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomerController</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">CustomerService</span><span class="w"> </span><span class="n">customerService</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/list&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">listCustomers</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">theModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// get customer from DAO</span><span class="w"></span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theCustomers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customerService</span><span class="p">.</span><span class="na">getCustomers</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// add customers to the model</span><span class="w"></span>
+<span class="w">        </span><span class="n">theModel</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;customers&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">theCustomers</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;list-customers&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h2 id="add-a-customer">Add a Customer<a class="headerlink" href="#add-a-customer" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Update <code>list-customer.jsp</code></li>
+<li>Create HTML for new customer</li>
+<li>Process Form data: Controller -&gt; Service -&gt; DAO</li>
+</ul>
+<p>Update <code>list-customer.jsp</code></p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- new button: Add customer --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Add Customer&quot;</span> 
+       <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;window.location.href=&#39;showFormForAdd&#39;&quot;</span> <span class="err">;</span> <span class="na">return</span> <span class="na">false</span><span class="err">;</span> 
+       <span class="na">class</span><span class="o">=</span><span class="s">&quot;add-button&quot;</span>
+<span class="p">/&gt;</span>
+</code></pre></div>
+<p>Create HTML for new customer</p>
+<p><code>CustomerController.java</code>
+<div class="highlight"><pre><span></span><code><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/showFormForAdd&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showFormForAdd</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">theModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Customer</span><span class="w"> </span><span class="n">theCustomer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Customer</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">theModel</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;customer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">theCustomer</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;customer-form&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><code>customer-form.jsp</code>
+<div class="highlight"><pre><span></span><code><span class="err">&lt;</span>%@ taglib prefix=&quot;form&quot; uri=&quot;http://www.springframework.org/tags/form&quot; %&gt;
+
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Save Customer<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span>
+        <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span>
+        <span class="na">href</span><span class="o">=</span><span class="s">&quot;${pageContext.request.contextPath}/resources/css/style.css&quot;</span>
+  <span class="p">/&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span>
+        <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span>
+        <span class="na">href</span><span class="o">=</span><span class="s">&quot;${pageContext.request.contextPath}/resources/css/add-customer-style.css&quot;</span>
+  <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;wrapper&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;header&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>CRM - Customer Relationship Manager<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Save Customer<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">form:form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;saveCustomer&quot;</span> <span class="na">modelAttribute</span><span class="o">=</span><span class="s">&quot;customer&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">label</span><span class="p">&gt;</span>First name:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">form:input</span> <span class="na">path</span><span class="o">=</span><span class="s">&quot;firstName&quot;</span> <span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Last name:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">form:input</span> <span class="na">path</span><span class="o">=</span><span class="s">&quot;lastName&quot;</span> <span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Email:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">form:input</span> <span class="na">path</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Save&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;save&quot;</span> <span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">form:form</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;clear: both&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;${pageContext.request.contextPath}/customer/list&quot;</span><span class="p">&gt;</span>Back to List<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p>Process Form data: Controller -&gt; Service -&gt; DAO</p>
+<p><code>CustomerService.java</code>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CustomerService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getCustomers</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">saveCustomer</span><span class="p">(</span><span class="n">Customer</span><span class="w"> </span><span class="n">theCustomer</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><code>CustomerServiceImpl.java</code>
+<div class="highlight"><pre><span></span><code><span class="nd">@Override</span><span class="w"></span>
+<span class="nd">@Transactional</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">saveCustomer</span><span class="p">(</span><span class="n">Customer</span><span class="w"> </span><span class="n">theCustomer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">customerDAO</span><span class="p">.</span><span class="na">saveCustomer</span><span class="p">(</span><span class="n">theCustomer</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><code>CustomerDAO.java</code>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CustomerDAO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getCustomers</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">saveCustomer</span><span class="p">(</span><span class="n">Customer</span><span class="w"> </span><span class="n">theCustomer</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><code>CustomerDAOImpl.java</code>
+<div class="highlight"><pre><span></span><code><span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">saveCustomer</span><span class="p">(</span><span class="n">Customer</span><span class="w"> </span><span class="n">theCustomer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Session</span><span class="w"> </span><span class="n">currentSession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sessionFactory</span><span class="p">.</span><span class="na">getCurrentSession</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">currentSession</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">theCustomer</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><code>CustomerController.java</code></p>
+<div class="highlight"><pre><span></span><code><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/saveCustomer&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">saveCustomer</span><span class="p">(</span><span class="nd">@ModelAttribute</span><span class="p">(</span><span class="s">&quot;customer&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="n">theCustomer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">customerService</span><span class="p">.</span><span class="na">saveCustomer</span><span class="p">(</span><span class="n">theCustomer</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/customer/list&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="sort-customer-by-last-name">Sort Customer by last name<a class="headerlink" href="#sort-customer-by-last-name" title="Permanent link">&para;</a></h3>
+<p><code>CustomerDAOImpl.java</code>
+<div class="highlight"><pre><span></span><code><span class="n">Query</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentSession</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;from Customer order by lastName&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Customer</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></p>
+<h2 id="update-customer">Update Customer<a class="headerlink" href="#update-customer" title="Permanent link">&para;</a></h2>
+<p><code>customer-form.jsp</code>
+* Update so that it handles params <code>customerId</code>:
+  * <code>http://localhost:8080/web-customer-tracker/customer/showFormUpdate?customerId=1</code>
+<div class="highlight"><pre><span></span><code>...
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Action<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+...
+  <span class="cm">&lt;!-- loop over and print our customers --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">c:forEach</span> <span class="na">var</span><span class="o">=</span><span class="s">&quot;tempCustomer&quot;</span> <span class="na">items</span><span class="o">=</span><span class="s">&quot;${customers}&quot;</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- construct update link with customer id --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">c:url</span> <span class="na">var</span><span class="o">=</span><span class="s">&quot;updateLink&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;/customer/showFormForUpdate&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">:c:param</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;customerId&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;${tempCustomer.id}&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">c:url</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> ${tempCustomer.firstName} <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> ${tempCustomer.lastName} <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> ${tempCustomer.email} <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;${updateLink}&quot;</span><span class="p">&gt;</span>Update<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;/</span><span class="nt">c:forEach</span><span class="p">&gt;</span>
+...
+</code></pre></div></p>
+<p><code>CustomerService.java</code>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CustomerService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getCustomers</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">saveCustomer</span><span class="p">(</span><span class="n">Customer</span><span class="w"> </span><span class="n">theCustomer</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><code>CustomerServiceImpl.java</code>
+<div class="highlight"><pre><span></span><code><span class="nd">@Override</span><span class="w"></span>
+<span class="nd">@Transactional</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">customerDAO</span><span class="p">.</span><span class="na">getCustomer</span><span class="p">(</span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><code>CustomerDAO.java</code>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CustomerDAO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getCustomers</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">saveCustomer</span><span class="p">(</span><span class="n">Customer</span><span class="w"> </span><span class="n">theCustomer</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><code>CustomerDAOImpl.java</code>
+<div class="highlight"><pre><span></span><code><span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Session</span><span class="w"> </span><span class="n">currentSession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sessionFactory</span><span class="p">.</span><span class="na">getCurrentSession</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Customer</span><span class="w"> </span><span class="n">theCustomer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentSession</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Customer</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">theCustomer</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><code>CustomerController.java</code></p>
+<div class="highlight"><pre><span></span><code><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/showFormForUpdate&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showFormForUpdate</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="p">(</span><span class="s">&quot;customerId&quot;</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="p">,</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">theModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Customer</span><span class="w"> </span><span class="n">theCustomer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customerService</span><span class="p">.</span><span class="na">getCustomer</span><span class="p">(</span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">theModel</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;customer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">theCustomer</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;customer-form&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="save-customer-to-db">Save customer to DB<a class="headerlink" href="#save-customer-to-db" title="Permanent link">&para;</a></h3>
+<p><code>customer-form.jsp</code>
+* When form is loaded, Spring will do <code>customer.get(id)</code> and place it in hidden form field
+* Then when we do a submit, Spring will submit this data by saying <code>customer.set(id)</code>
+* So backend knows on which customer to perform the update on
+* <strong>Very important line</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- need to associate this data with customer id --&gt;</span>
+<span class="p">&lt;</span><span class="nt">form:hidden</span> <span class="na">path</span><span class="o">=</span><span class="s">&quot;id&quot;</span> <span class="p">/&gt;</span>
+</code></pre></div>
+<ul>
+<li>Use UPSERT in DAO implementation instead of <code>save</code>
+<code>CustomerDAOImpl.java</code>
+<div class="highlight"><pre><span></span><code><span class="n">currentSession</span><span class="p">.</span><span class="na">saveOrUpdate</span><span class="p">(</span><span class="n">theCustomer</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></li>
+</ul>
+<h2 id="delete-customer">Delete Customer<a class="headerlink" href="#delete-customer" title="Permanent link">&para;</a></h2>
+<p><code>list-customer.html</code>
+<div class="highlight"><pre><span></span><code>...
+<span class="p">&lt;</span><span class="nt">c:url</span> <span class="na">var</span><span class="o">=</span><span class="s">&quot;deleteLink&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;/customer/delete&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">:c:param</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;customerId&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;${tempCustomer.id}&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">c:url</span><span class="p">&gt;</span>
+...
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;${updateLink}&quot;</span><span class="p">&gt;</span>Update<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  |
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;${deleteLink}&quot;</span>
+     <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;if (!(confirm(&#39;Are you sure you want to delete this customer?&#39;))) return false&quot;</span><span class="p">&gt;</span>Delete<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+...
+</code></pre></div></p>
+<p><code>CustomerService.java</code>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CustomerService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getCustomers</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">saveCustomer</span><span class="p">(</span><span class="n">Customer</span><span class="w"> </span><span class="n">theCustomer</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteCustomer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><code>CustomerServiceImpl.java</code>
+<div class="highlight"><pre><span></span><code><span class="nd">@Override</span><span class="w"></span>
+<span class="nd">@Transactional</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteCustomer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">customerDAO</span><span class="p">.</span><span class="na">deleteCustomer</span><span class="p">(</span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><code>CustomerDAO.java</code>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CustomerDAO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getCustomers</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">saveCustomer</span><span class="p">(</span><span class="n">Customer</span><span class="w"> </span><span class="n">theCustomer</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteCustomer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><code>CustomerDAOImpl.java</code>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteCustomer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Session</span><span class="w"> </span><span class="n">currentSession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sessionFactory</span><span class="p">.</span><span class="na">getCurrentSession</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Query</span><span class="w"> </span><span class="n">theQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentSession</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;delete from Customer where id=:customerId&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">theQuery</span><span class="p">.</span><span class="na">setParameter</span><span class="p">(</span><span class="s">&quot;customerId&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">theQuery</span><span class="p">.</span><span class="na">executeUpdate</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p><code>CustomerController.java</code></p>
+<div class="highlight"><pre><span></span><code><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/delete&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">deleteCustomer</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="p">(</span><span class="s">&quot;customerId&quot;</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="p">,</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">theModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">customerService</span><span class="p">.</span><span class="na">deleteCustomer</span><span class="p">(</span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/customer/list&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="hibernate.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Hibernate" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Hibernate
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="aop.html" class="md-footer__link md-footer__link--next" aria-label="Next: Aspect Oriented Programming (AOP)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Aspect Oriented Programming (AOP)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+    
+  </body>
+</html>
