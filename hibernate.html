@@ -8,8 +8,14 @@
       
       
       
+      
+        <link rel="prev" href="mvc.html">
+      
+      
+        <link rel="next" href="hibernate_mvc_project.html">
+      
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
     
       
@@ -17,11 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.472b142f.min.css">
-      
-        
-        <link rel="stylesheet" href="assets/stylesheets/palette.08040f6c.min.css">
-        
+      <link rel="stylesheet" href="assets/stylesheets/main.26e3688c.min.css">
       
       
 
@@ -47,14 +49,11 @@
   </head>
   
   
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="None" data-md-color-accent="None">
+    <body dir="ltr">
   
     
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -74,7 +73,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="index.html" title="Spring &amp; Hibernate" class="md-header__button md-logo" aria-label="Spring & Hibernate" data-md-component="logo">
       
@@ -130,7 +131,7 @@
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -231,7 +232,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
@@ -427,19 +428,19 @@
 <li>Developer defines mapping between Java class and database table</li>
 </ul>
 <p><img alt="ORM" src="images/ORM.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="c1">// create object</span><span class="w"></span>
-<span class="n">Student</span><span class="w"> </span><span class="n">theStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Doe&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1">// create object</span>
+<span class="n">Student</span><span class="w"> </span><span class="n">theStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Doe&quot;</span><span class="p">);</span>
 
-<span class="c1">// save it to DB and returns ID</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">theStudent</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// save it to DB and returns ID</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">theStudent</span><span class="p">);</span>
 
-<span class="c1">// retrieve from DB</span><span class="w"></span>
-<span class="n">Student</span><span class="w"> </span><span class="n">myStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Student</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// retrieve from DB</span>
+<span class="n">Student</span><span class="w"> </span><span class="n">myStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Student</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">theId</span><span class="p">);</span>
 
-<span class="c1">// query objects</span><span class="w"></span>
-<span class="n">Query</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;from student&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Hibernate Query Language</span><span class="w"></span>
+<span class="c1">// query objects</span>
+<span class="n">Query</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;from student&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Hibernate Query Language</span>
 
-<span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">query</span><span class="p">.</span><span class="na">list</span><span class="p">();</span><span class="w"></span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">query</span><span class="p">.</span><span class="na">list</span><span class="p">();</span>
 </code></pre></div>
 <h2 id="hibernate-jdbc-relationship">Hibernate &amp; JDBC Relationship<a class="headerlink" href="#hibernate-jdbc-relationship" title="Permanent link">&para;</a></h2>
 <ul>
@@ -454,112 +455,112 @@
 <p>Add Hibernate config file. It tells Hibernate how to connect to the DB</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;hibernate-configuration&gt;</span>
 
-    <span class="nt">&lt;session-factory&gt;</span>
+<span class="w">    </span><span class="nt">&lt;session-factory&gt;</span>
 
-        <span class="cm">&lt;!-- JDBC Database connection settings --&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;connection.driver_class&quot;</span><span class="nt">&gt;</span>com.mysql.cj.jdbc.Driver<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;connection.url&quot;</span><span class="nt">&gt;</span>jdbc:mysql://localhost:3306/hb_student_tracker?useSSL=false<span class="ni">&amp;amp;</span>serverTimezone=UTC<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;connection.username&quot;</span><span class="nt">&gt;</span>hbstudent<span class="nt">&lt;/property&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;connection.password&quot;</span><span class="nt">&gt;</span>hbstudent<span class="nt">&lt;/property&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- JDBC Database connection settings --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;connection.driver_class&quot;</span><span class="nt">&gt;</span>com.mysql.cj.jdbc.Driver<span class="nt">&lt;/property&gt;</span>
+<span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;connection.url&quot;</span><span class="nt">&gt;</span>jdbc:mysql://localhost:3306/hb_student_tracker?useSSL=false<span class="ni">&amp;amp;</span>serverTimezone=UTC<span class="nt">&lt;/property&gt;</span>
+<span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;connection.username&quot;</span><span class="nt">&gt;</span>hbstudent<span class="nt">&lt;/property&gt;</span>
+<span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;connection.password&quot;</span><span class="nt">&gt;</span>hbstudent<span class="nt">&lt;/property&gt;</span>
 
-        <span class="cm">&lt;!-- JDBC connection pool settings ... using built-in test pool --&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;connection.pool_size&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- JDBC connection pool settings ... using built-in test pool --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;connection.pool_size&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
 
-        <span class="cm">&lt;!-- Select our SQL dialect --&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;dialect&quot;</span><span class="nt">&gt;</span>org.hibernate.dialect.MySQLDialect<span class="nt">&lt;/property&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- Select our SQL dialect --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dialect&quot;</span><span class="nt">&gt;</span>org.hibernate.dialect.MySQLDialect<span class="nt">&lt;/property&gt;</span>
 
-        <span class="cm">&lt;!-- Echo the SQL to stdout --&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;show_sql&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- Echo the SQL to stdout --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;show_sql&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
 
-        <span class="cm">&lt;!-- Set the current session context --&gt;</span>
-        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;current_session_context_class&quot;</span><span class="nt">&gt;</span>thread<span class="nt">&lt;/property&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- Set the current session context --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;current_session_context_class&quot;</span><span class="nt">&gt;</span>thread<span class="nt">&lt;/property&gt;</span>
 
-    <span class="nt">&lt;/session-factory&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/session-factory&gt;</span>
 
 <span class="nt">&lt;/hibernate-configuration&gt;</span>
 </code></pre></div>
 <p>Annotate Java Class. Entity Class = Java class that is mapped to DB table
 1. XML config (legacy)
 2. Java Annotations (prefered)</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Entity</span><span class="w"></span>
-<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;student&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Student</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@Id</span><span class="w"> </span><span class="c1">// PK</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="p">.</span><span class="na">IDENTITY</span><span class="p">)</span><span class="w"> </span><span class="c1">// PK if you wanna be explicit</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="p">.</span><span class="na">AUTO</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="p">.</span><span class="na">SEQUENCE</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="p">.</span><span class="na">TABLE</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;id&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;student&quot;</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Student</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Id</span><span class="w"> </span><span class="c1">// PK</span>
+<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="p">.</span><span class="na">IDENTITY</span><span class="p">)</span><span class="w"> </span><span class="c1">// PK if you wanna be explicit</span>
+<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="p">.</span><span class="na">AUTO</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="p">.</span><span class="na">SEQUENCE</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="p">.</span><span class="na">TABLE</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;id&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;first_name&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;first_name&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Develop Java code to perform DB operations</p>
 <ul>
 <li><code>SessionFactory</code>: Reads the hibernate config file, creates session objects, only create once in your app</li>
 <li><code>Session</code>: Wraps a JDBC connection, Main object to save/retrieve objects, retrieved from SessionFactory, short-lived object (use it and then throw it away)</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="n">SessionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Configuration</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">configure</span><span class="p">(</span><span class="s">&quot;hibernate.cfg.xm&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">addAnnotatedClass</span><span class="p">(</span><span class="n">Student</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">buildSessionFactory</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">SessionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Configuration</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">configure</span><span class="p">(</span><span class="s">&quot;hibernate.cfg.xm&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">addAnnotatedClass</span><span class="p">(</span><span class="n">Student</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">buildSessionFactory</span><span class="p">();</span>
 
-<span class="n">Session</span><span class="w"> </span><span class="n">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factory</span><span class="p">.</span><span class="na">getCurrentSession</span><span class="p">();</span><span class="w"></span>
+<span class="n">Session</span><span class="w"> </span><span class="n">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factory</span><span class="p">.</span><span class="na">getCurrentSession</span><span class="p">();</span>
 
-<span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="c1">// create student object</span><span class="w"></span>
-<span class="w">        </span><span class="n">Student</span><span class="w"> </span><span class="n">tempStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">();</span><span class="w"></span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// create student object</span>
+<span class="w">        </span><span class="n">Student</span><span class="w"> </span><span class="n">tempStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">();</span>
 
-<span class="w">        </span><span class="c1">// start transaction (hibernate knows how to map this object based on our annotion)</span><span class="w"></span>
-<span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">beginTransaction</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// start transaction (hibernate knows how to map this object based on our annotion)</span>
+<span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">beginTransaction</span><span class="p">();</span>
 
-<span class="w">        </span><span class="c1">// save the student</span><span class="w"></span>
-<span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">tempStudent</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// save the student</span>
+<span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">tempStudent</span><span class="p">);</span>
 
-<span class="w">        </span><span class="c1">// commit the transaction</span><span class="w"></span>
-<span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">getTransaction</span><span class="p">().</span><span class="na">commit</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">factory</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// commit the transaction</span>
+<span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">getTransaction</span><span class="p">().</span><span class="na">commit</span><span class="p">();</span>
+<span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">factory</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="p">}</span>
 </code></pre></div>
 <h2 id="retrieve-an-object">Retrieve an object<a class="headerlink" href="#retrieve-an-object" title="Permanent link">&para;</a></h2>
 <ul>
 <li>In hibernate we retrieve objects by its ID (Primary Key)</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="n">Student</span><span class="w"> </span><span class="n">myStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Student</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">theStudent</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">Student</span><span class="w"> </span><span class="n">myStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Student</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">theStudent</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span>
 </code></pre></div>
 <h3 id="querying-objects">Querying Objects<a class="headerlink" href="#querying-objects" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Using HQL, similar to SQL</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// use the Java class name here</span><span class="w"></span>
-<span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theStudents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;from Student&quot;</span><span class="p">).</span><span class="na">getResultList</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1">// use the Java class name here</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theStudents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;from Student&quot;</span><span class="p">).</span><span class="na">getResultList</span><span class="p">();</span>
 
-<span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theStudents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;from Student s where s.lastName=&#39;Doe&#39;&quot;</span><span class="p">).</span><span class="na">getResultList</span><span class="p">();</span><span class="w"></span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theStudents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;from Student s where s.lastName=&#39;Doe&#39;&quot;</span><span class="p">).</span><span class="na">getResultList</span><span class="p">();</span>
 </code></pre></div>
 <h2 id="updating-objects">Updating Objects<a class="headerlink" href="#updating-objects" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">studentId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="n">Student</span><span class="w"> </span><span class="n">myStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Student</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">studentId</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">studentId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">Student</span><span class="w"> </span><span class="n">myStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Student</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">studentId</span><span class="p">);</span>
 
-<span class="n">myStudent</span><span class="p">.</span><span class="na">setFirstName</span><span class="p">(</span><span class="s">&quot;Scooby&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">myStudent</span><span class="p">.</span><span class="na">setFirstName</span><span class="p">(</span><span class="s">&quot;Scooby&quot;</span><span class="p">);</span>
 
-<span class="n">session</span><span class="p">.</span><span class="na">getTransaction</span><span class="p">().</span><span class="na">commit</span><span class="p">();</span><span class="w"></span>
+<span class="n">session</span><span class="p">.</span><span class="na">getTransaction</span><span class="p">().</span><span class="na">commit</span><span class="p">();</span>
 </code></pre></div>
 <p>For multiple updates:
-<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;update Student set email=&#39;foo@gmail.com&#39;&quot;</span><span class="p">).</span><span class="na">executeUpdate</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;update Student set email=&#39;foo@gmail.com&#39;&quot;</span><span class="p">).</span><span class="na">executeUpdate</span><span class="p">();</span>
 </code></pre></div></p>
 <h2 id="deleting-objects">Deleting Objects<a class="headerlink" href="#deleting-objects" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">studentId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="n">Student</span><span class="w"> </span><span class="n">myStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Student</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">studentId</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">studentId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">Student</span><span class="w"> </span><span class="n">myStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Student</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">studentId</span><span class="p">);</span>
 
-<span class="n">session</span><span class="p">.</span><span class="na">delete</span><span class="p">(</span><span class="n">myStudent</span><span class="p">);</span><span class="w"></span>
+<span class="n">session</span><span class="p">.</span><span class="na">delete</span><span class="p">(</span><span class="n">myStudent</span><span class="p">);</span>
 
-<span class="n">session</span><span class="p">.</span><span class="na">getTransaction</span><span class="p">().</span><span class="na">commit</span><span class="p">();</span><span class="w"></span>
+<span class="n">session</span><span class="p">.</span><span class="na">getTransaction</span><span class="p">().</span><span class="na">commit</span><span class="p">();</span>
 </code></pre></div>
 <p>For multiple deletions:
-<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;delete from Student where id=2&quot;</span><span class="p">).</span><span class="na">executeUpdate</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="p">.</span><span class="na">createQuery</span><span class="p">(</span><span class="s">&quot;delete from Student where id=2&quot;</span><span class="p">).</span><span class="na">executeUpdate</span><span class="p">();</span>
 </code></pre></div></p>
 <h2 id="advanced-mappings">Advanced Mappings<a class="headerlink" href="#advanced-mappings" title="Permanent link">&para;</a></h2>
 <ul>
@@ -569,45 +570,45 @@
 </ul>
 <h3 id="11-mapping">1:1 mapping<a class="headerlink" href="#11-mapping" title="Permanent link">&para;</a></h3>
 <p>Create <code>InstructorDetail</code> table
-<div class="highlight"><pre><span></span><code><span class="nd">@Entity</span><span class="w"></span>
-<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;instructor_detail&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">InstructorDetail</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@Id</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="p">.</span><span class="na">IDENTITY</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;id&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;instructor_detail&quot;</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">InstructorDetail</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Id</span>
+<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="p">.</span><span class="na">IDENTITY</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;id&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
 
-<span class="w">    </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
 </code></pre></div></p>
 <p>Create <code>Instructor</code> table and map to <code>InstructorDetail</code></p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Entity</span><span class="w"></span>
-<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;instructor&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Instructor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@Id</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="p">.</span><span class="na">IDENTITY</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;id&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;instructor&quot;</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Instructor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Id</span>
+<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="p">.</span><span class="na">IDENTITY</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;id&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@OneToOne</span><span class="p">(</span><span class="n">cascade</span><span class="o">=</span><span class="n">CascadeType</span><span class="p">.</span><span class="na">ALL</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@JoinColumn</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;instructor_detail_id&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">InstructorDetail</span><span class="w"> </span><span class="n">instructorDetail</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@OneToOne</span><span class="p">(</span><span class="n">cascade</span><span class="o">=</span><span class="n">CascadeType</span><span class="p">.</span><span class="na">ALL</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@JoinColumn</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;instructor_detail_id&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">InstructorDetail</span><span class="w"> </span><span class="n">instructorDetail</span><span class="p">;</span>
 
-<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span>
 
-<span class="p">}</span><span class="w"></span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Create Main App</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Instructor</span><span class="w"> </span><span class="n">tempInstructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Instructor</span><span class="p">(</span><span class="s">&quot;Max&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Musterman&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;maxmuster@gmail.com&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">InstructorDetail</span><span class="w"> </span><span class="n">tempInstructorDetail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InstructorDetail</span><span class="p">(</span><span class="s">&quot;http://www.example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Heyya!&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Instructor</span><span class="w"> </span><span class="n">tempInstructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Instructor</span><span class="p">(</span><span class="s">&quot;Max&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Musterman&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;maxmuster@gmail.com&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">InstructorDetail</span><span class="w"> </span><span class="n">tempInstructorDetail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InstructorDetail</span><span class="p">(</span><span class="s">&quot;http://www.example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Heyya!&quot;</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">tempInstructor</span><span class="p">.</span><span class="na">setInstructorDetail</span><span class="p">(</span><span class="n">tempInstructorDetail</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">tempInstructor</span><span class="p">.</span><span class="na">setInstructorDetail</span><span class="p">(</span><span class="n">tempInstructorDetail</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">session</span><span class="p">.</span><span class="na">beginTransaction</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">session</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">tempInstructor</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">session</span><span class="p">.</span><span class="na">getTransaction</span><span class="p">().</span><span class="na">commit</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">session</span><span class="p">.</span><span class="na">beginTransaction</span><span class="p">();</span>
+<span class="w">    </span><span class="n">session</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">tempInstructor</span><span class="p">);</span>
+<span class="w">    </span><span class="n">session</span><span class="p">.</span><span class="na">getTransaction</span><span class="p">().</span><span class="na">commit</span><span class="p">();</span>
+<span class="p">}</span>
 </code></pre></div>
 <h3 id="11-bi-directional">1:1 Bi-Directional<a class="headerlink" href="#11-bi-directional" title="Permanent link">&para;</a></h3>
 <ul>
@@ -615,29 +616,29 @@
 <li>Cant do this with our uni-directional setup</li>
 </ul>
 <p>Changes to <code>InstructorDetail</code>
-<div class="highlight"><pre><span></span><code><span class="nd">@Entity</span><span class="w"></span>
-<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;instructor_detail&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">InstructorDetail</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;instructor_detail&quot;</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">InstructorDetail</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nd">@OneToOne</span><span class="p">(</span><span class="n">mappedBy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;instructorDetail&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cascade</span><span class="o">=</span><span class="n">CascadeType</span><span class="p">.</span><span class="na">ALL</span><span class="p">)</span><span class="w"> </span><span class="c1">// refers to the instructorDetail property in Instructor.class</span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Instructor</span><span class="w"> </span><span class="n">instructor</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@OneToOne</span><span class="p">(</span><span class="n">mappedBy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;instructorDetail&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cascade</span><span class="o">=</span><span class="n">CascadeType</span><span class="p">.</span><span class="na">ALL</span><span class="p">)</span><span class="w"> </span><span class="c1">// refers to the instructorDetail property in Instructor.class</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Instructor</span><span class="w"> </span><span class="n">instructor</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Instructor</span><span class="w"> </span><span class="nf">getInstructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">instructor</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Instructor</span><span class="w"> </span><span class="nf">getInstructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">instructor</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setInstructor</span><span class="p">(</span><span class="n">Instructor</span><span class="w"> </span><span class="n">instructor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">instructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">instructor</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setInstructor</span><span class="p">(</span><span class="n">Instructor</span><span class="w"> </span><span class="n">instructor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">instructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">instructor</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></p>
 <p>Create Main App
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">InstructorDetail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">InstructorDetail</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">theId</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">theId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">InstructorDetail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">InstructorDetail</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">theId</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">Sysout</span><span class="p">(</span><span class="n">temp</span><span class="p">.</span><span class="na">getInstructor</span><span class="p">());</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">Sysout</span><span class="p">(</span><span class="n">temp</span><span class="p">.</span><span class="na">getInstructor</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
 </code></pre></div></p>
 <h2 id="stoped-at-lecture-23-video-12">STOPED AT LECTURE 23, VIDEO 12<a class="headerlink" href="#stoped-at-lecture-23-video-12" title="Permanent link">&para;</a></h2>
 
@@ -652,50 +653,14 @@
           
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
             Back to top
-          </a>
+          </button>
         
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="mvc.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: MVC" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              MVC
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="hibernate_mvc_project.html" class="md-footer__link md-footer__link--next" aria-label="Next: Hibernate &amp; MVC Project" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Hibernate & MVC Project
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -718,10 +683,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      <script src="assets/javascripts/bundle.b4d07000.min.js"></script>
       
     
   </body>
