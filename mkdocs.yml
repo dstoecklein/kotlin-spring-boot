@@ -1,0 +1,28 @@
+site_name: Spring & Hibernate
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 2
+  - meta
+  - pymdownx.highlight
+  - pymdownx.superfences
+nav:
+    - Introduction: index.md
+    - Annotations: annotations.md
+    - MVC: mvc.md
+    - Hibernate: hibernate.md
+    - Hibernate & MVC Project: hibernate_mvc_project.md
+    - Aspect Oriented Programming (AOP): aop.md
+    - Security: security.md
+    - Maven: maven.md
+    - REST: rest.md
+plugins:
+  - search:
+      lang: de
+use_directory_urls: false
