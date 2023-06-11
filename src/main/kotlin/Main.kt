@@ -1,7 +1,17 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+@RestController
+@SpringBootApplication
+open class Main {
+
+    @RequestMapping("/")
+    fun home() = "Hello Worl!"
+
+}
+
+fun main(args: Array<String>) {
+    runApplication<Main>(*args)
 }
