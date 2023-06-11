@@ -1,9 +1,9 @@
-# Spring Bean
+# 1. Spring Bean
 A Spring Bean is simply a Java object. When Java objects are created by the Spring Container, then Spring refers to them as "Spring Beans".Spring Beans are created from normal Java classes ... just like Java objects.
 
 > In summary, whenever you see "Spring Bean", just think Java object.
 
-# Spring IoC Container (Inversion of Control)
+# 2. Spring IoC Container (Inversion of Control)
 Responsible for managing the objects (beans) of an application. It uses dependency injection to achieve inversion of control. ``BeanFactory`` and `ApplicationContext` represent the Spring IoC container. `BeanFactory` is the root interface for accessing the Spring container. `ApplicationContext` is a sub-interface of `BeanFactory`.
 * Create and manage objects (Inversion of control)
 * Tell ``BeanFactory`` to give me an object
@@ -13,12 +13,12 @@ Responsible for managing the objects (beans) of an application. It uses dependen
   * Java Source Code (modern)
 * Inject objects dependencies (Dependency injection)
 
-# Spring Development Process
+# 3. Spring Development Process
 1. Configure Spring Beans
 2. Create a Spring Container
 3. Retrieve Beans from Spring Container
 
-## Example (XML-based configuration)
+## 3.1 Example (XML-based configuration)
 ``applicationContext.xml``
 ```XML
 <beans>
@@ -36,7 +36,7 @@ Retrieve Beans from container
 Coach theCoach = context.getBean("myCoach", Coach.class);
 ```
 
-# Dependency Injection
+# 4. Dependency Injection
 * A ``car`` object has multiple dependencies such as ``engine`` etc.
 * A car factory (Spring object factory) assembles the car with its dependencies
 * **Injection types**
@@ -44,7 +44,7 @@ Coach theCoach = context.getBean("myCoach", Coach.class);
   * Setter injection
   * Auto-Wiring via annotations
 
-## Constructor injection
+## 4.1 Constructor injection
 1. Define the dependency interface and class
 2. Create a constructor in your class for injections
 3. Configure the dependency injection in Spring config file
@@ -85,12 +85,12 @@ Configure the dependency injection in Spring config file
 </bean>
 ```
 
-## What's happening behind the scenes
+### 4.1.1 What's happening behind the scenes
 * Spring will create objects for all beans 
   * ``HappyFortuneService myFortuneService = new HappyFortuneService();``
   * ``BaseballCoach myCoach = new BaseballCoach(myFortuneService);``
 
-# Setter injection
+## 4.2 Setter injection
 1. Create setter methods for dependency injection
 2. Configure the dependency injection in Spring config file
 
@@ -122,7 +122,7 @@ Configure the dependency injection in Spring config file
 </bean>
 ```
 
-# Literal injection
+### 4.2.1 Literal injection
 1. Create setter methods for dependency injection
 2. Configure the dependency injection in Spring config file
 
@@ -163,7 +163,7 @@ Configure the dependency injection in Spring config file
 </bean>
 ```
 
-# Inject values from Properties file
+### 4.2.2 Inject values from Properties file
 * Problem with literal injection is that values were hardcoded. We want to read these values from a properties file.
 
 1. Create Properties file
@@ -192,7 +192,7 @@ Reference values from Properties file
 </bean>
 ```
 
-# Scopes
+# 5. Scopes
 * Refers to a lifecycle of a bean
   * How long does the bean live
   * How many instances are created
@@ -212,7 +212,7 @@ Another scopes are:
 * ``session``: Scoped to an HTTP web session
 * ``global-session``: Scoped to a global HTTP web session
 
-# Bean lifecycle
+# 6. Bean lifecycle
 * Container started -> bean instantiated -> dependency injected -> internal Spring processing -> Your custom init method (optional)
 
 ```xml

@@ -1,4 +1,4 @@
-# Kotlin and Spring Boot
+# 1. Kotlin and Spring Boot
 
 Run and visit `http://localhost:8080`
 
@@ -25,4 +25,4 @@ The `@SpringBootApplication` is a *meta-annotation*, it combines `@SpringBootCon
 
 In the `main` method we need to pass `Main`.class as an argument to the run method to tell SpringApplication which is the primary Spring component. 
 
-# Gradle (Kotlin DLS)
+# 2. Gradle (Kotlin DLS)
