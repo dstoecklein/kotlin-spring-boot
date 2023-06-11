@@ -3,36 +3,35 @@ A Spring Bean is simply a Java object. When Java objects are created by the Spri
 
 > In summary, whenever you see "Spring Bean", just think Java object.
 
-# Spring Container (Application Context)
+# Spring IoC Container (Inversion of Control)
+Responsible for managing the objects (beans) of an application. It uses dependency injection to achieve inversion of control. ``BeanFactory`` and `ApplicationContext` represent the Spring IoC container. `BeanFactory` is the root interface for accessing the Spring container. `ApplicationContext` is a sub-interface of `BeanFactory`.
 * Create and manage objects (Inversion of control)
-  * Tell ``Object Factory`` to give me a "Coach" object
-  * Spring creates objects based on configurations
-  * Automate object creation
-* Inject objects dependencies (Dependency injection)
-* Configure Beans via
+* Tell ``BeanFactory`` to give me an object
+* Spring automatically creates objects based on configurations
   * XML (legacy)
   * Java Annotations (modern)
   * Java Source Code (modern)
+* Inject objects dependencies (Dependency injection)
 
 # Spring Development Process
 1. Configure Spring Beans
 2. Create a Spring Container
 3. Retrieve Beans from Spring Container
 
-## Example
-Bean configuration via XML, ``applicationContext.xml``
+## Example (XML-based configuration)
+``applicationContext.xml``
 ```XML
 <beans>
     <bean id="myCoach" class="com.dstoecklein.springdemo.BaseballCoach"></bean>
 </beans>
 ```
 
-Creating a Spring Container
+Creating a Spring Container. Note that `ClassPathXmlApplicationContext` is used to create the container. This loads an XML file from the classpath. There are more types: `AnnotationConfigApplicationContext`, `AnnotationConfigWebApplicationContext`, ...
 ```java
 ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 ```
 
-Retrieve Beans from Container
+Retrieve Beans from container
 ```java
 Coach theCoach = context.getBean("myCoach", Coach.class);
 ```
@@ -40,8 +39,7 @@ Coach theCoach = context.getBean("myCoach", Coach.class);
 # Dependency Injection
 * A ``car`` object has multiple dependencies such as ``engine`` etc.
 * A car factory (Spring object factory) assembles the car with its dependencies
-* A dependency is like a helper object
-* Injection types
+* **Injection types**
   * Constructor injection
   * Setter injection
   * Auto-Wiring via annotations

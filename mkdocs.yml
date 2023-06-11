@@ -22,6 +22,7 @@ nav:
     - Security: security.md
     - Maven: maven.md
     - REST: rest.md
+    - Spring Boot: spring_boot.md
 plugins:
   - search:
       lang: de
