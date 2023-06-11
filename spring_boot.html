@@ -9,17 +9,15 @@
       
       
       
-        <link rel="prev" href="hibernate_mvc_project.html">
+        <link rel="prev" href="rest.html">
       
-      
-        <link rel="next" href="security.html">
       
       <link rel="icon" href="assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
     
       
-        <title>Aspect Oriented Programming (AOP) - Spring & Hibernate</title>
+        <title>Spring Boot - Spring & Hibernate</title>
       
     
     
@@ -61,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aspect-oriented-programming-aop" class="md-skip">
+        <a href="#kotlin-and-spring-boot" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Aspect Oriented Programming (AOP)
+              Spring Boot
             
           </span>
         </div>
@@ -257,73 +255,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Aspect Oriented Programming (AOP)
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="aop.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="aop.html" class="md-nav__link">
         Aspect Oriented Programming (AOP)
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#problem-statement" class="md-nav__link">
-    Problem statement
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#possible-solution" class="md-nav__link">
-    Possible Solution
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aop-solution" class="md-nav__link">
-    AOP Solution
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aop-terminology" class="md-nav__link">
-    AOP Terminology
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -379,11 +315,21 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="spring_boot.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="spring_boot.html" class="md-nav__link md-nav__link--active">
         Spring Boot
       </a>
+      
     </li>
   
 
@@ -403,126 +349,27 @@
                   
 
 
-<h1 id="aspect-oriented-programming-aop">Aspect Oriented Programming (AOP)<a class="headerlink" href="#aspect-oriented-programming-aop" title="Permanent link">&para;</a></h1>
-<ul>
-<li>This is basic hibernate code as we did before to save an entity:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addAccount</span><span class="p">(</span><span class="n">Account</span><span class="w"> </span><span class="n">theAccount</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Session</span><span class="w"> </span><span class="n">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sessionFactory</span><span class="p">.</span><span class="na">getCurrentSession</span><span class="p">();</span>
-<span class="w">    </span><span class="n">session</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">theAccount</span><span class="p">);</span>
+<h1 id="kotlin-and-spring-boot">Kotlin and Spring Boot<a class="headerlink" href="#kotlin-and-spring-boot" title="Permanent link">&para;</a></h1>
+<p>Run and visit <code>http://localhost:8080</code></p>
+<div class="highlight"><pre><span></span><code><span class="nd">@RestController</span>
+<span class="nd">@SpringBootApplication</span>
+<span class="kd">open</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">home</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span>
+<span class="p">}</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runApplication</span><span class="o">&lt;</span><span class="n">Main</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<ul>
-<li>Now we have some new requirements from the boss, to add some logging.</li>
-<li>Need to log our DAO method</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addAccount</span><span class="p">(</span><span class="n">Account</span><span class="w"> </span><span class="n">theAccount</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// add logging (println, log4j, etc.)</span>
-
-<span class="w">    </span><span class="n">Session</span><span class="w"> </span><span class="n">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sessionFactory</span><span class="p">.</span><span class="na">getCurrentSession</span><span class="p">();</span>
-<span class="w">    </span><span class="n">session</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">theAccount</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>New requirement comes in:</li>
-<li>Need to add security to our DAO before running the method</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addAccount</span><span class="p">(</span><span class="n">Account</span><span class="w"> </span><span class="n">theAccount</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// add logging (println, log4j, etc.)</span>
-
-<span class="w">    </span><span class="c1">// add security check</span>
-
-<span class="w">    </span><span class="n">Session</span><span class="w"> </span><span class="n">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sessionFactory</span><span class="p">.</span><span class="na">getCurrentSession</span><span class="p">();</span>
-<span class="w">    </span><span class="n">session</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">theAccount</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>New requirement comes in:</li>
-<li>Let's add this to Controller, Service also</li>
-</ul>
-<p>...</p>
-<ul>
-<li>New requirement comes in:</li>
-<li>Add this to our entire system</li>
-</ul>
-<p>...</p>
-<h2 id="problem-statement">Problem statement<a class="headerlink" href="#problem-statement" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Code Tangling</strong>: We have logging and security code tangled in that specific business method, which is not good</li>
-<li><strong>Code Scattering</strong>: We have to update all classes if changes to logging logic is required</li>
-</ul>
-<h2 id="possible-solution">Possible Solution<a class="headerlink" href="#possible-solution" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Inheritance? (no)</li>
-<li>We still would need to go through all our classes and put "extends" in</li>
-<li>What if they already extend from another class -&gt; no multiple inheritance allowed in Java</li>
-<li>Delegation? (no)</li>
-<li>Same as above - need to touch all classes</li>
-<li>Aspect-Oriented Programming (yes)</li>
-<li>An Aspect encapsulates <strong>Cross-Cutting Concerns</strong></li>
-<li>An Aspect can be reused at multiple locations, and it's basically just a class</li>
-</ul>
-<p><img alt="ccl" src="images/ccl.png" /></p>
-<h2 id="aop-solution">AOP Solution<a class="headerlink" href="#aop-solution" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Apply the Proxy design pattern</li>
-<li>The <code>Main App</code> simply going to make a method-call, it has no idea about ``AOP Proxy</li>
-<li>Everything happens behind the scene (like a spy)</li>
-</ul>
-<p><img alt="aop" src="images/aop.png" /></p>
-<h3 id="benefits">Benefits<a class="headerlink" href="#benefits" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Code for Aspect is defined in a single class</li>
-<li>Business code is cleaner</li>
-<li>Configurable (Can apply to different parts of app, no need to change main)</li>
-</ul>
-<h3 id="disadvantages">Disadvantages<a class="headerlink" href="#disadvantages" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Too many Aspects make app flow hard to follow</li>
-<li>Minor performance cost</li>
-</ul>
-<h3 id="aop-use-cases">AOP Use Cases<a class="headerlink" href="#aop-use-cases" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Logging, Security, Transaction</li>
-<li>Exception Handling</li>
-<li>API Management</li>
-<li>...</li>
-</ul>
-<h2 id="aop-terminology">AOP Terminology<a class="headerlink" href="#aop-terminology" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Aspect</strong>: Module of code for cross-cutting-concerns (logging, security, ...)</li>
-<li><strong>Advice</strong>: What action is taken and when should be applied</li>
-<li><strong>Join Point</strong>: When to apply code during program execution</li>
-<li><strong>Pointcut</strong>: A predicate expression for where advice should be applied</li>
-</ul>
-<h3 id="advice-types">Advice Types<a class="headerlink" href="#advice-types" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Before advice</strong>: Run before the method</li>
-<li><strong>After finally advice</strong>: Run after the method</li>
-<li><strong>After returning advice</strong>: Run after the method (on success)</li>
-<li><strong>After throwing advice</strong>: Run after the method (on exception)</li>
-<li><strong>Around advice</strong>: Run before and after method</li>
-</ul>
-<h3 id="weaving">Weaving<a class="headerlink" href="#weaving" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Connecting aspects to target objects to create an advised object</li>
-<li>Compile-time, load-time, run-time (slowest) weaving</li>
-</ul>
-<h3 id="aop-frameworks">AOP Frameworks<a class="headerlink" href="#aop-frameworks" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Spring AOP</strong> (easier to use, lightweight)</li>
-<li>Only method-level join points</li>
-<li>Uses proxy pattern</li>
-<li>Security, Transactions, Caching</li>
-<li>Uses run-time weaving of aspects</li>
-<li><strong>AspectJ</strong> (better for complex requirements)</li>
-<li>Support all join points</li>
-<li>Complete support for AOP</li>
-<li>Compile-time, post-compile, load-time weaving</li>
-</ul>
+<p><code>@RestController</code> is a <em>stereotype</em> annotation, which provides hints for people reading the code and for Spring that the class play a specific role. In this case, the class is a web <code>@Controller</code>, so Spring considers it when handling incoming web requests.</p>
+<p><code>@RequestMapping</code> annotation provides routing information. It tells Spring that any HTTP request should be mapped to the <code>home</code> method.</p>
+<blockquote>
+<p>The <code>@RestController</code> and <code>@RequestMapping</code> annotations are Spring MVC annotations (they are not specific to Spring Boot)</p>
+</blockquote>
+<p>The <code>@SpringBootApplication</code> is a <em>meta-annotation</em>, it combines <code>@SpringBootConfiguration</code>, <code>@EnableAutoConfiguration</code> and <code>@ComponentScan</code>. <code>@EnableAutoConfiguration</code> tells Spring Boot to <em>guess</em> how you want to configure Spring, based on the jar dependencies that you have added.</p>
+<p>In the <code>main</code> method we need to pass <code>Main</code>.class as an argument to the run method to tell SpringApplication which is the primary Spring component. </p>
+<h1 id="gradle-kotlin-dls">Gradle (Kotlin DLS)<a class="headerlink" href="#gradle-kotlin-dls" title="Permanent link">&para;</a></h1>
 
 
 

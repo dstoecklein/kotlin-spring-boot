@@ -319,6 +319,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spring_boot.html" class="md-nav__link">
+        Spring Boot
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -339,42 +354,38 @@
 <blockquote>
 <p>In summary, whenever you see "Spring Bean", just think Java object.</p>
 </blockquote>
-<h1 id="spring-container-application-context">Spring Container (Application Context)<a class="headerlink" href="#spring-container-application-context" title="Permanent link">&para;</a></h1>
-<ul>
-<li>Create and manage objects (Inversion of control)</li>
-<li>Tell <code>Object Factory</code> to give me a "Coach" object</li>
-<li>Spring creates objects based on configurations</li>
-<li>Automate object creation</li>
-<li>Inject objects dependencies (Dependency injection)</li>
-<li>Configure Beans via</li>
-<li>XML (legacy)</li>
-<li>Java Annotations (modern)</li>
-<li>Java Source Code (modern)</li>
-</ul>
+<h1 id="spring-ioc-container-inversion-of-control">Spring IoC Container (Inversion of Control)<a class="headerlink" href="#spring-ioc-container-inversion-of-control" title="Permanent link">&para;</a></h1>
+<p>Responsible for managing the objects (beans) of an application. It uses dependency injection to achieve inversion of control. <code>BeanFactory</code> and <code>ApplicationContext</code> represent the Spring IoC container. <code>BeanFactory</code> is the root interface for accessing the Spring container. <code>ApplicationContext</code> is a sub-interface of <code>BeanFactory</code>.
+* Create and manage objects (Inversion of control)
+* Tell <code>BeanFactory</code> to give me an object
+* Spring automatically creates objects based on configurations
+  * XML (legacy)
+  * Java Annotations (modern)
+  * Java Source Code (modern)
+* Inject objects dependencies (Dependency injection)</p>
 <h1 id="spring-development-process">Spring Development Process<a class="headerlink" href="#spring-development-process" title="Permanent link">&para;</a></h1>
 <ol>
 <li>Configure Spring Beans</li>
 <li>Create a Spring Container</li>
 <li>Retrieve Beans from Spring Container</li>
 </ol>
-<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<p>Bean configuration via XML, <code>applicationContext.xml</code>
+<h2 id="example-xml-based-configuration">Example (XML-based configuration)<a class="headerlink" href="#example-xml-based-configuration" title="Permanent link">&para;</a></h2>
+<p><code>applicationContext.xml</code>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;beans&gt;</span>
 <span class="w">    </span><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;myCoach&quot;</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;com.dstoecklein.springdemo.BaseballCoach&quot;</span><span class="nt">&gt;&lt;/bean&gt;</span>
 <span class="nt">&lt;/beans&gt;</span>
 </code></pre></div></p>
-<p>Creating a Spring Container
+<p>Creating a Spring Container. Note that <code>ClassPathXmlApplicationContext</code> is used to create the container. This loads an XML file from the classpath. There are more types: <code>AnnotationConfigApplicationContext</code>, <code>AnnotationConfigWebApplicationContext</code>, ...
 <div class="highlight"><pre><span></span><code><span class="n">ClassPathXmlApplicationContext</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ClassPathXmlApplicationContext</span><span class="p">(</span><span class="s">&quot;applicationContext.xml&quot;</span><span class="p">);</span>
 </code></pre></div></p>
-<p>Retrieve Beans from Container
+<p>Retrieve Beans from container
 <div class="highlight"><pre><span></span><code><span class="n">Coach</span><span class="w"> </span><span class="n">theCoach</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="s">&quot;myCoach&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Coach</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
 </code></pre></div></p>
 <h1 id="dependency-injection">Dependency Injection<a class="headerlink" href="#dependency-injection" title="Permanent link">&para;</a></h1>
 <ul>
 <li>A <code>car</code> object has multiple dependencies such as <code>engine</code> etc.</li>
 <li>A car factory (Spring object factory) assembles the car with its dependencies</li>
-<li>A dependency is like a helper object</li>
-<li>Injection types</li>
+<li><strong>Injection types</strong></li>
 <li>Constructor injection</li>
 <li>Setter injection</li>
 <li>Auto-Wiring via annotations</li>
