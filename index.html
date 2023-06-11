@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#spring-bean" class="md-skip">
+        <a href="#1-spring-bean" class="md-skip">
           Skip to content
         </a>
       
@@ -349,12 +349,12 @@
                   
 
 
-<h1 id="spring-bean">Spring Bean<a class="headerlink" href="#spring-bean" title="Permanent link">&para;</a></h1>
+<h1 id="1-spring-bean">1. Spring Bean<a class="headerlink" href="#1-spring-bean" title="Permanent link">&para;</a></h1>
 <p>A Spring Bean is simply a Java object. When Java objects are created by the Spring Container, then Spring refers to them as "Spring Beans".Spring Beans are created from normal Java classes ... just like Java objects.</p>
 <blockquote>
 <p>In summary, whenever you see "Spring Bean", just think Java object.</p>
 </blockquote>
-<h1 id="spring-ioc-container-inversion-of-control">Spring IoC Container (Inversion of Control)<a class="headerlink" href="#spring-ioc-container-inversion-of-control" title="Permanent link">&para;</a></h1>
+<h1 id="2-spring-ioc-container-inversion-of-control">2. Spring IoC Container (Inversion of Control)<a class="headerlink" href="#2-spring-ioc-container-inversion-of-control" title="Permanent link">&para;</a></h1>
 <p>Responsible for managing the objects (beans) of an application. It uses dependency injection to achieve inversion of control. <code>BeanFactory</code> and <code>ApplicationContext</code> represent the Spring IoC container. <code>BeanFactory</code> is the root interface for accessing the Spring container. <code>ApplicationContext</code> is a sub-interface of <code>BeanFactory</code>.
 * Create and manage objects (Inversion of control)
 * Tell <code>BeanFactory</code> to give me an object
@@ -363,13 +363,13 @@
   * Java Annotations (modern)
   * Java Source Code (modern)
 * Inject objects dependencies (Dependency injection)</p>
-<h1 id="spring-development-process">Spring Development Process<a class="headerlink" href="#spring-development-process" title="Permanent link">&para;</a></h1>
+<h1 id="3-spring-development-process">3. Spring Development Process<a class="headerlink" href="#3-spring-development-process" title="Permanent link">&para;</a></h1>
 <ol>
 <li>Configure Spring Beans</li>
 <li>Create a Spring Container</li>
 <li>Retrieve Beans from Spring Container</li>
 </ol>
-<h2 id="example-xml-based-configuration">Example (XML-based configuration)<a class="headerlink" href="#example-xml-based-configuration" title="Permanent link">&para;</a></h2>
+<h2 id="31-example-xml-based-configuration">3.1 Example (XML-based configuration)<a class="headerlink" href="#31-example-xml-based-configuration" title="Permanent link">&para;</a></h2>
 <p><code>applicationContext.xml</code>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;beans&gt;</span>
 <span class="w">    </span><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;myCoach&quot;</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;com.dstoecklein.springdemo.BaseballCoach&quot;</span><span class="nt">&gt;&lt;/bean&gt;</span>
@@ -381,7 +381,7 @@
 <p>Retrieve Beans from container
 <div class="highlight"><pre><span></span><code><span class="n">Coach</span><span class="w"> </span><span class="n">theCoach</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="s">&quot;myCoach&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Coach</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
 </code></pre></div></p>
-<h1 id="dependency-injection">Dependency Injection<a class="headerlink" href="#dependency-injection" title="Permanent link">&para;</a></h1>
+<h1 id="4-dependency-injection">4. Dependency Injection<a class="headerlink" href="#4-dependency-injection" title="Permanent link">&para;</a></h1>
 <ul>
 <li>A <code>car</code> object has multiple dependencies such as <code>engine</code> etc.</li>
 <li>A car factory (Spring object factory) assembles the car with its dependencies</li>
@@ -390,7 +390,7 @@
 <li>Setter injection</li>
 <li>Auto-Wiring via annotations</li>
 </ul>
-<h2 id="constructor-injection">Constructor injection<a class="headerlink" href="#constructor-injection" title="Permanent link">&para;</a></h2>
+<h2 id="41-constructor-injection">4.1 Constructor injection<a class="headerlink" href="#41-constructor-injection" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Define the dependency interface and class</li>
 <li>Create a constructor in your class for injections</li>
@@ -426,13 +426,13 @@
 <span class="w">        </span><span class="nt">&lt;constructor-arg</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;myFortuneService&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/bean&gt;</span>
 </code></pre></div></p>
-<h2 id="whats-happening-behind-the-scenes">What's happening behind the scenes<a class="headerlink" href="#whats-happening-behind-the-scenes" title="Permanent link">&para;</a></h2>
+<h3 id="411-whats-happening-behind-the-scenes">4.1.1 What's happening behind the scenes<a class="headerlink" href="#411-whats-happening-behind-the-scenes" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Spring will create objects for all beans </li>
 <li><code>HappyFortuneService myFortuneService = new HappyFortuneService();</code></li>
 <li><code>BaseballCoach myCoach = new BaseballCoach(myFortuneService);</code></li>
 </ul>
-<h1 id="setter-injection">Setter injection<a class="headerlink" href="#setter-injection" title="Permanent link">&para;</a></h1>
+<h2 id="42-setter-injection">4.2 Setter injection<a class="headerlink" href="#42-setter-injection" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Create setter methods for dependency injection</li>
 <li>Configure the dependency injection in Spring config file</li>
@@ -460,7 +460,7 @@
 <span class="w">    </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fortuneService&quot;</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;myFortuneService&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/bean&gt;</span>
 </code></pre></div></p>
-<h1 id="literal-injection">Literal injection<a class="headerlink" href="#literal-injection" title="Permanent link">&para;</a></h1>
+<h3 id="421-literal-injection">4.2.1 Literal injection<a class="headerlink" href="#421-literal-injection" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Create setter methods for dependency injection</li>
 <li>Configure the dependency injection in Spring config file</li>
@@ -497,7 +497,7 @@
 <span class="w">  </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;team&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;ExampleTeam&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/bean&gt;</span>
 </code></pre></div></p>
-<h1 id="inject-values-from-properties-file">Inject values from Properties file<a class="headerlink" href="#inject-values-from-properties-file" title="Permanent link">&para;</a></h1>
+<h3 id="422-inject-values-from-properties-file">4.2.2 Inject values from Properties file<a class="headerlink" href="#422-inject-values-from-properties-file" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>Problem with literal injection is that values were hardcoded. We want to read these values from a properties file.</p>
@@ -523,7 +523,7 @@ foo.team=exampleTeam
 <span class="w">  </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;team&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;${foo.team}&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/bean&gt;</span>
 </code></pre></div></p>
-<h1 id="scopes">Scopes<a class="headerlink" href="#scopes" title="Permanent link">&para;</a></h1>
+<h1 id="5-scopes">5. Scopes<a class="headerlink" href="#5-scopes" title="Permanent link">&para;</a></h1>
 <ul>
 <li>Refers to a lifecycle of a bean</li>
 <li>How long does the bean live</li>
@@ -541,7 +541,7 @@ foo.team=exampleTeam
 * <code>request</code>: Scopes to an HTTP web request
 * <code>session</code>: Scoped to an HTTP web session
 * <code>global-session</code>: Scoped to a global HTTP web session</p>
-<h1 id="bean-lifecycle">Bean lifecycle<a class="headerlink" href="#bean-lifecycle" title="Permanent link">&para;</a></h1>
+<h1 id="6-bean-lifecycle">6. Bean lifecycle<a class="headerlink" href="#6-bean-lifecycle" title="Permanent link">&para;</a></h1>
 <ul>
 <li>Container started -&gt; bean instantiated -&gt; dependency injected -&gt; internal Spring processing -&gt; Your custom init method (optional)</li>
 </ul>
